@@ -1,0 +1,94 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Notas Interativo</title>
+    <!-- Carrega o framework Tailwind CSS para classes utilitárias e responsividade -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Link para o arquivo de estilos personalizado -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100 min-h-screen p-4 sm:p-8 font-sans">
+    
+    <!-- Mensagem de Feedback Customizada (Substitui o alert) -->
+    <div id="feedback-message" class="bg-blue-500 text-white"></div>
+
+    <div class="max-w-4xl mx-auto bg-white p-6 sm:p-10 rounded-xl shadow-2xl">
+        <!-- Título Principal -->
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-8 border-b-4 border-cor-principal pb-2">
+            Sistema de Notas Interativo
+        </h1>
+
+        <!-- Formulário de Cadastro -->
+        <div class="mb-10 p-6 bg-blue-50 rounded-lg border border-blue-200">
+            <h2 class="text-2xl font-semibold text-gray-700 mb-4">Cadastrar Novo Aluno</h2>
+            <form id="aluno-form" class="space-y-4">
+                <!-- Campo Nome do Aluno -->
+                <div>
+                    <label for="nome" class="block text-sm font-medium text-gray-700">Nome do Aluno:</label>
+                    <input type="text" id="nome" name="nome" placeholder="Ex: Maria Silva" required
+                           class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                </div>
+                
+                <!-- Campos de Notas (3 notas) -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <!-- Nota 1 -->
+                    <div>
+                        <label for="nota1" class="block text-sm font-medium text-gray-700">Nota 1 (0-10):</label>
+                        <input type="number" id="nota1" name="nota1" min="0" max="10" step="0.1" required
+                               placeholder="Ex: 8.5"
+                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    </div>
+                    <!-- Nota 2 -->
+                    <div>
+                        <label for="nota2" class="block text-sm font-medium text-gray-700">Nota 2 (0-10):</label>
+                        <input type="number" id="nota2" name="nota2" min="0" max="10" step="0.1" required
+                               placeholder="Ex: 7.0"
+                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    </div>
+                    <!-- Nota 3 -->
+                    <div>
+                        <label for="nota3" class="block text-sm font-medium text-gray-700">Nota 3 (0-10):</label>
+                        <input type="number" id="nota3" name="nota3" min="0" max="10" step="0.1" required
+                               placeholder="Ex: 9.0"
+                               class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+                    </div>
+                </div>
+
+                <!-- Botão para Adicionar Aluno -->
+                <button type="submit" id="add-btn"
+                        class="w-full sm:w-auto px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Adicionar Aluno
+                </button>
+            </form>
+        </div>
+
+        <!-- Tabela de Registros -->
+        <h2 class="text-2xl font-semibold text-gray-700 mb-4">Registros de Alunos</h2>
+        <div class="table-container shadow-lg rounded-lg border border-gray-200">
+            <table class="min-w-full divide-y divide-gray-200">
+                <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Nome</th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Nota 1</th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Nota 2</th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Nota 3</th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Média</th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                        <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                    </tr>
+                </thead>
+                <!-- Corpo da Tabela onde os dados serão inseridos via JS -->
+                <tbody id="registros-tabela" class="bg-white divide-y divide-gray-200">
+                    <!-- Registros serão inseridos aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Link para o arquivo JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
